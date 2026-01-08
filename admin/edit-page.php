@@ -334,6 +334,45 @@ if ($currentPage && array_key_exists($currentPage, $pages)) {
                 display: none;
             }
         }
+        
+        /* Accordion Sections */
+        .accordion-section {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            margin-bottom: 12px;
+            overflow: hidden;
+        }
+        .accordion-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: var(--bg-card);
+            transition: all 0.2s;
+            font-weight: 500;
+        }
+        .accordion-header:hover {
+            background: rgba(201, 167, 83, 0.1);
+        }
+        .accordion-header i {
+            transition: transform 0.3s;
+            color: var(--gold-primary);
+        }
+        .accordion-section.open .accordion-header i {
+            transform: rotate(180deg);
+        }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            padding: 0 20px;
+        }
+        .accordion-section.open .accordion-content {
+            max-height: 2000px;
+            padding: 15px 20px;
+        }
     </style>
 </head>
 <body class="admin-body">
@@ -399,10 +438,44 @@ if ($currentPage && array_key_exists($currentPage, $pages)) {
                     </div>
 
                     <div class="split-view">
+                    <!-- EDITOR PANEL -->
+                    <div class="editor-panel">
                     <form method="POST" class="visual-form">
                         <input type="hidden" name="page" value="<?php echo htmlspecialchars($currentPage); ?>">
                         
-                        <?php foreach ($editableElements as $el): ?>
+                        <?php 
+                        // Group elements by section
+                        $sections = [];
+                        foreach ($editableElements as $el) {
+                            $parts = explode('_', $el['id']);
+                            $sectionKey = $parts[0] ?? 'other';
+                            if (!isset($sections[$sectionKey])) {
+                                $sections[$sectionKey] = ['name' => '', 'items' => []];
+                            }
+                            $sections[$sectionKey]['items'][] = $el;
+                        }
+                        
+                        // Section names
+                        $sectionNames = [
+                            'home' => '🏠 Strona Główna',
+                            'about' => '👤 O Mnie',
+                            'target' => '🎯 Dla Kogo',
+                            'price' => '💰 Cennik',
+                            'other' => '📝 Inne'
+                        ];
+                        
+                        $sectionIndex = 0;
+                        foreach ($sections as $sectionKey => $section): 
+                            $sectionName = $sectionNames[$sectionKey] ?? ucfirst($sectionKey);
+                            $isOpen = $sectionIndex === 0; // First section open by default
+                        ?>
+                        <div class="accordion-section <?php echo $isOpen ? 'open' : ''; ?>">
+                            <div class="accordion-header" onclick="toggleAccordion(this)">
+                                <span><?php echo $sectionName; ?> (<?php echo count($section['items']); ?> pól)</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="accordion-content">
+                        <?php foreach ($section['items'] as $el): ?>
                         <div class="form-group">
                             <label for="<?php echo $el['id']; ?>">
                                 <?php if($el['type']==='image'): ?><i class="fas fa-image"></i><?php else: ?><i class="fas fa-font"></i><?php endif; ?>
@@ -427,9 +500,14 @@ if ($currentPage && array_key_exists($currentPage, $pages)) {
                                 <input type="text" id="<?php echo $el['id']; ?>" name="<?php echo $el['id']; ?>" 
                                        value="<?php echo htmlspecialchars($el['content']); ?>" class="form-input">
                             <?php endif; ?>
-                        </div>
+                        </div><!-- end form-group -->
                         <?php endforeach; ?>
-                        
+                            </div><!-- end accordion-content -->
+                        </div><!-- end accordion-section -->
+                        <?php 
+                            $sectionIndex++;
+                        endforeach; 
+                        ?>
                         <div class="editor-actions sticky-actions">
                             <button type="submit" class="btn btn-save">Zapisz zmiany</button>
                             <a href="../<?php echo htmlspecialchars($currentPage); ?>" target="_blank" class="btn btn-preview">Podgląd</a>
@@ -522,7 +600,12 @@ if ($currentPage && array_key_exists($currentPage, $pages)) {
             }
         }
         
-        // Optional: Auto-refresh preview after save (page reload handles this already)
+        // Accordion Toggle
+        function toggleAccordion(header) {
+            const section = header.parentElement;
+            section.classList.toggle('open');
+        }
     </script>
+    <script src="js/admin.js"></script>
 </body>
 </html>
