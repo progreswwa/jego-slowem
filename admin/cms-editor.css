@@ -1,0 +1,303 @@
+/* CMS Inline Editor Styles */
+
+/* Admin Bar */
+#cms-admin-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 50px;
+    background: linear-gradient(135deg, #1a1a1e 0%, #2a2a30 100%);
+    border-bottom: 2px solid #C9A753;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    z-index: 10000;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+}
+
+.cms-bar-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.cms-bar-logo {
+    background: linear-gradient(135deg, #DCCA8B 0%, #C9A753 100%);
+    color: #111;
+    font-weight: 700;
+    font-size: 12px;
+    padding: 5px 12px;
+    border-radius: 4px;
+    letter-spacing: 0.1em;
+}
+
+.cms-bar-status {
+    color: #8f8;
+    font-size: 13px;
+}
+
+.cms-bar-right {
+    display: flex;
+    gap: 10px;
+}
+
+.cms-bar-btn {
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    border: none;
+    transition: all 0.2s;
+}
+
+.cms-btn-primary {
+    background: linear-gradient(135deg, #DCCA8B 0%, #C9A753 100%);
+    color: #111;
+}
+
+.cms-btn-primary:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(201, 167, 83, 0.4);
+}
+
+.cms-btn-primary:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.cms-btn-secondary {
+    background: rgba(255, 255, 255, 0.1);
+    color: #f5f5f5;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.cms-btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* Editable Elements */
+.cms-editable {
+    cursor: pointer !important;
+    transition: outline 0.2s, box-shadow 0.2s;
+}
+
+.cms-editable:hover {
+    outline: 2px dashed rgba(201, 167, 83, 0.5) !important;
+    outline-offset: 4px;
+}
+
+.cms-editable-text:hover {
+    outline-color: rgba(100, 200, 100, 0.6) !important;
+}
+
+.cms-editable-img:hover {
+    outline-color: rgba(100, 150, 255, 0.6) !important;
+}
+
+.cms-editing {
+    outline: 2px solid #C9A753 !important;
+    outline-offset: 4px;
+}
+
+.cms-changed {
+    outline: 2px solid #4CAF50 !important;
+    outline-offset: 4px;
+}
+
+/* Editor Popup */
+.cms-editor-popup {
+    position: absolute;
+    background: #1a1a1e;
+    border: 1px solid #C9A753;
+    border-radius: 12px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+    z-index: 10001;
+    min-width: 350px;
+    max-width: 500px;
+    overflow: hidden;
+}
+
+.cms-editor-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    background: rgba(201, 167, 83, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    color: #f5f5f5;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.cms-editor-close {
+    background: none;
+    border: none;
+    color: #888;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 0 5px;
+}
+
+.cms-editor-close:hover {
+    color: #fff;
+}
+
+.cms-editor-toolbar {
+    display: flex;
+    gap: 5px;
+    padding: 10px 16px;
+    background: rgba(0, 0, 0, 0.3);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.cms-editor-toolbar button {
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: #ccc;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.cms-editor-toolbar button:hover {
+    background: #C9A753;
+    color: #111;
+}
+
+.cms-editor-content {
+    min-height: 100px;
+    max-height: 200px;
+    overflow-y: auto;
+    padding: 16px;
+    color: #f5f5f5;
+    font-size: 15px;
+    line-height: 1.6;
+    border: none;
+    outline: none;
+}
+
+.cms-editor-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    padding: 12px 16px;
+    background: rgba(0, 0, 0, 0.2);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.cms-btn-cancel {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #ccc;
+    padding: 8px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.cms-btn-cancel:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.cms-btn-apply {
+    background: linear-gradient(135deg, #DCCA8B 0%, #C9A753 100%);
+    border: none;
+    color: #111;
+    padding: 8px 20px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.cms-btn-apply:hover {
+    transform: translateY(-1px);
+}
+
+/* Image Picker */
+.cms-image-popup {
+    min-width: 300px;
+}
+
+.cms-image-preview {
+    padding: 20px;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.cms-image-preview img {
+    max-width: 100%;
+    max-height: 200px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.cms-image-upload {
+    padding: 16px;
+    text-align: center;
+}
+
+.cms-upload-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px dashed rgba(201, 167, 83, 0.5);
+    color: #C9A753;
+    padding: 15px 25px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.cms-upload-btn:hover {
+    background: rgba(201, 167, 83, 0.1);
+    border-color: #C9A753;
+}
+
+/* Toast Notifications */
+.cms-toast {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 14px 24px;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 14px;
+    z-index: 10002;
+    transform: translateX(120%);
+    transition: transform 0.3s ease;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+}
+
+.cms-toast-show {
+    transform: translateX(0);
+}
+
+.cms-toast-success {
+    background: linear-gradient(135deg, #28a745 0%, #1e7e34 100%);
+}
+
+.cms-toast-error {
+    background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+}
+
+.cms-toast-info {
+    background: linear-gradient(135deg, #C9A753 0%, #8F722E 100%);
+    color: #111;
+}
+
+/* Adjust body padding when admin bar is visible */
+body.cms-edit-mode {
+    padding-top: 50px !important;
+}
+
+body.cms-edit-mode .header {
+    top: 50px !important;
+}
