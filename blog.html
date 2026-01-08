@@ -45,14 +45,26 @@
         </div>
     </header>
 
-    <main class="about-page-main">
+    <main class="about-page-main" style="flex: 1;">
         <section class="about-header">
             <div class="container">
                 <h1 class="about-page-title">BLOG</h1>
             </div>
         </section>
-        <section class="container" style="padding: 2rem 0 4rem; text-align: center;">
-            <p class="hero-description">Inspiracje, artykuły i przemyślenia.</p>
+        <section class="container" style="padding: var(--section-spacing) 0;">
+            <p class="hero-description" style="text-align: center; margin-bottom: 3rem;">Inspiracje, artykuły i
+                przemyślenia.</p>
+
+            <!-- Coming Soon Placeholder -->
+            <div
+                style="text-align: center; padding: 4rem 2rem; background: var(--bg-surface); border-radius: var(--card-radius); border: 1px solid var(--line-color);">
+                <i class="fas fa-pencil-alt"
+                    style="font-size: 3rem; color: var(--gold-primary); margin-bottom: 1.5rem; display: block;"></i>
+                <h3 style="font-family: var(--font-heading); color: var(--gold-primary); margin-bottom: 1rem;">Wkrótce
+                </h3>
+                <p style="color: var(--text-muted); max-width: 500px; margin: 0 auto;">Pracuję nad inspirującymi
+                    artykułami, które wkrótce tutaj opublikuję. Zapraszam do śledzenia!</p>
+            </div>
         </section>
     </main>
 
