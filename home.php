@@ -58,7 +58,7 @@
     <main>
         <!-- Hero Section -->
         <section class="hero">
-            <div class="container hero-content">
+            <div class="container">
                 <div class="hero-grid-layout">
                     <!-- Left Column: Text Content -->
                     <div class="hero-text-col">
