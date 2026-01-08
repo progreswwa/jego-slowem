@@ -413,8 +413,8 @@ button {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding-top: 5rem;
-    padding-bottom: 1rem;
+    padding-top: 4rem;
+    padding-bottom: 0.5rem;
     position: relative;
     overflow: hidden;
     background: radial-gradient(circle at center, rgba(20, 20, 22, 1) 0%, #000000 100%);
