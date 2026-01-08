@@ -409,11 +409,10 @@ button {
 }
 
 .hero-content {
-    max-width: 1400px;
-    /* Wider for grander look */
+    max-width: var(--container-width);
     margin: 0 auto;
-    width: 90%;
-    /* Ensure mobile padding */
+    padding: 0 clamp(1rem, 2vw, 1.5rem);
+    /* Same as .container */
 }
 
 .hero-grid-layout {
