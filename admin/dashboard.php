@@ -55,7 +55,12 @@ $imageCount = count(glob($imagesDir . '/*.{jpg,jpeg,png,gif,webp}', GLOB_BRACE))
             <span>Panel CMS</span>
         </div>
         <div class="nav-user">
-            <span><i class="fas fa-user-circle"></i> <?php echo htmlspecialchars($_SESSION['admin_username']); ?></span>
+            <button class="mobile-admin-toggle" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <a href="dashboard.php" class="btn btn-secondary btn-sm" style="margin-right:10px">Pulpit</a>
             <a href="logout.php" class="btn-logout" title="Wyloguj">
                 <i class="fas fa-sign-out-alt"></i>
             </a>
@@ -87,6 +92,12 @@ $imageCount = count(glob($imagesDir . '/*.{jpg,jpeg,png,gif,webp}', GLOB_BRACE))
                     <a href="blog.php">
                         <i class="fas fa-newspaper"></i>
                         <span>Blog</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="history.php">
+                        <i class="fas fa-history"></i>
+                        <span>Historia</span>
                     </a>
                 </li>
                 <li>

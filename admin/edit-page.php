@@ -214,6 +214,127 @@ if ($currentPage && array_key_exists($currentPage, $pages)) {
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/admin.css">
+    <style>
+        /* Live Preview Split View */
+        .split-view {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            min-height: 600px;
+        }
+        .split-view .editor-panel {
+            max-height: 80vh;
+            overflow-y: auto;
+            padding-right: 10px;
+        }
+        .split-view .preview-panel {
+            position: sticky;
+            top: 80px;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            overflow: hidden;
+            background: #fff;
+        }
+        .split-view .preview-panel iframe {
+            width: 100%;
+            height: 80vh;
+            border: none;
+        }
+        .preview-header {
+            background: var(--bg-card);
+            padding: 10px 15px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .preview-header span {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+        /* Image Picker Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0; top: 0;
+            width: 100%; height: 100%;
+            background-color: rgba(0,0,0,0.85);
+            backdrop-filter: blur(5px);
+        }
+        .modal-content {
+            background-color: var(--bg-card);
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid var(--gold-primary);
+            border-radius: var(--radius);
+            width: 80%;
+            max-width: 900px;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .modal-header h3 { margin: 0; }
+        .close-modal {
+            color: var(--text-muted);
+            font-size: 28px;
+            cursor: pointer;
+        }
+        .close-modal:hover { color: var(--gold-primary); }
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 12px;
+        }
+        .image-item {
+            border: 2px solid transparent;
+            cursor: pointer;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.2s;
+        }
+        .image-item:hover {
+            border-color: var(--gold-primary);
+            transform: scale(1.03);
+        }
+        .image-item img {
+            width: 100%;
+            height: 90px;
+            object-fit: cover;
+        }
+        .image-name {
+            font-size: 11px;
+            padding: 5px;
+            text-align: center;
+            color: var(--text-muted);
+            background: rgba(0,0,0,0.5);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        /* Current editing indicator */
+        .current-page-badge {
+            background: var(--gold-gradient);
+            color: #111;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        @media (max-width: 1024px) {
+            .split-view {
+                grid-template-columns: 1fr;
+            }
+            .preview-panel {
+                display: none;
+            }
+        }
+    </style>
 </head>
 <body class="admin-body">
     <nav class="admin-nav">
@@ -272,8 +393,12 @@ if ($currentPage && array_key_exists($currentPage, $pages)) {
                 </div>
                 <?php else: ?>
                 <section class="editor-section">
-                    <h2><i class="fas fa-pen-fancy"></i> Edycja: <?php echo htmlspecialchars($pageName); ?></h2>
-                    
+                    <div class="section-header" style="margin-bottom: 20px;">
+                        <h2><i class="fas fa-pen-fancy"></i> Edycja: <?php echo htmlspecialchars($pageName); ?></h2>
+                        <span class="current-page-badge"><i class="fas fa-file-alt"></i> <?php echo htmlspecialchars($currentPage); ?></span>
+                    </div>
+
+                    <div class="split-view">
                     <form method="POST" class="visual-form">
                         <input type="hidden" name="page" value="<?php echo htmlspecialchars($currentPage); ?>">
                         
@@ -286,10 +411,12 @@ if ($currentPage && array_key_exists($currentPage, $pages)) {
                             </label>
                             
                             <?php if ($el['type'] === 'image'): ?>
-                                <div class="image-input-group">
+                                <div class="image-input-group" style="display:flex; gap:10px;">
                                     <input type="text" id="<?php echo $el['id']; ?>" name="<?php echo $el['id']; ?>" 
-                                           value="<?php echo htmlspecialchars($el['content']); ?>" class="form-input">
-                                    <button type="button" class="btn btn-secondary btn-sm" onclick="window.open('images.php', '_blank')">Galeria</button>
+                                           value="<?php echo htmlspecialchars($el['content']); ?>" class="form-input" style="flex:1;">
+                                    <button type="button" class="btn btn-secondary btn-sm" onclick="openImagePicker('<?php echo $el['id']; ?>')">
+                                        <i class="fas fa-images"></i> Wybierz
+                                    </button>
                                 </div>
                                 <div class="image-preview-mini">
                                     <img src="../<?php echo htmlspecialchars($el['content']); ?>" alt="Podgląd" style="max-height: 100px; margin-top: 5px; border-radius: 4px;">
@@ -308,10 +435,94 @@ if ($currentPage && array_key_exists($currentPage, $pages)) {
                             <a href="../<?php echo htmlspecialchars($currentPage); ?>" target="_blank" class="btn btn-preview">Podgląd</a>
                         </div>
                     </form>
+                    </div><!-- end editor-panel -->
+
+                    <!-- LIVE PREVIEW PANEL -->
+                    <div class="preview-panel">
+                        <div class="preview-header">
+                            <span><i class="fas fa-eye"></i> Podgląd na żywo</span>
+                            <a href="../<?php echo htmlspecialchars($currentPage); ?>" target="_blank" class="btn btn-secondary btn-sm">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                        <iframe id="livePreview" src="../<?php echo htmlspecialchars($currentPage); ?>"></iframe>
+                    </div>
+                    </div><!-- end split-view -->
                 </section>
                 <?php endif; ?>
             <?php endif; ?>
         </main>
     </div>
+
+    <!-- IMAGE PICKER MODAL -->
+    <div id="imageModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-images"></i> Wybierz obraz z biblioteki</h3>
+                <span class="close-modal" onclick="closeImageModal()">&times;</span>
+            </div>
+            <div class="image-grid">
+                <?php
+                $existingImages = glob(__DIR__ . '/../images/*.{jpg,jpeg,png,gif,webp}', GLOB_BRACE);
+                if ($existingImages) {
+                    foreach ($existingImages as $img) {
+                        $basename = basename($img);
+                        echo '<div class="image-item" onclick="selectImage(\'images/' . $basename . '\')">
+                                <img src="../images/' . $basename . '" loading="lazy" alt="' . $basename . '">
+                                <div class="image-name">' . $basename . '</div>
+                              </div>';
+                    }
+                } else {
+                    echo '<p style="grid-column: 1/-1; text-align: center; padding: 20px;">Brak zdjęć w folderze images/</p>';
+                }
+                ?>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Image Picker
+        let currentImageField = null;
+        
+        function openImagePicker(fieldId) {
+            currentImageField = fieldId;
+            document.getElementById('imageModal').style.display = 'block';
+        }
+        
+        function closeImageModal() {
+            document.getElementById('imageModal').style.display = 'none';
+            currentImageField = null;
+        }
+        
+        function selectImage(path) {
+            if (currentImageField) {
+                document.getElementById(currentImageField).value = path;
+                // Update preview
+                const previewImg = document.getElementById(currentImageField).parentElement.nextElementSibling?.querySelector('img');
+                if (previewImg) {
+                    previewImg.src = '../' + path;
+                }
+            }
+            closeImageModal();
+        }
+        
+        // Close modal on click outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('imageModal');
+            if (event.target === modal) {
+                closeImageModal();
+            }
+        }
+        
+        // Live Preview Refresh
+        function refreshPreview() {
+            const iframe = document.getElementById('livePreview');
+            if (iframe) {
+                iframe.src = iframe.src;
+            }
+        }
+        
+        // Optional: Auto-refresh preview after save (page reload handles this already)
+    </script>
 </body>
 </html>
