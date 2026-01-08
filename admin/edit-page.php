@@ -191,8 +191,8 @@ if ($currentPage && array_key_exists($currentPage, $pages)) {
                 ? $friendlyLabels[$id] 
                 : ucwords(str_replace(['_', '-'], ' ', $id));
             
-            // Clean up content (trim)
-            $content = trim($content);
+            // Clean up content (trim and normalize whitespace)
+            $content = preg_replace('/\s+/', ' ', trim($content));
             
             $editableElements[] = [
                 'id' => $id,
