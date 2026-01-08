@@ -1858,13 +1858,15 @@ button:focus-visible {
     display: grid;
     grid-template-columns: 1fr;
     gap: 3rem;
-    align-items: start;
+    align-items: center;
+    /* Center both columns vertically */
 }
 
 @media (min-width: 900px) {
     .contact-grid {
         grid-template-columns: 1fr 1fr;
         gap: 4rem;
+        align-items: center;
     }
 }
 
