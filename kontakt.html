@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontakt - Umów Konsultację | Jego Słowem</title>
+    <meta name="description"
+        content="Umów bezpłatną rozmowę wstępną. Pierwsza rozmowa (20 min) jest całkowicie bezpłatna i niezobowiązująca.">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- Header & Navigation -->
+    <header class="header">
+        <div class="container nav">
+            <div class="nav-brand">
+                <a href="index.php" class="brand">
+                    <img src="images/logo.png" alt="Jego Słowem" class="brand-logo">
+                </a>
+            </div>
+
+            <button class="mobile-nav-toggle" aria-label="Otwórz menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <ul class="nav-links">
+                <li><a href="index.php">Start</a></li>
+                <li><a href="o-mnie.html">O Mnie</a></li>
+                <li><a href="dla-kogo.html">Dla Kogo</a></li>
+                <li><a href="cennik.html">Oferta</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="faq.html">Opinie</a></li>
+                <li><a href="kontakt.html" class="active">Kontakt</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <a href="kontakt.html" class="btn btn-primary btn-sm">Umów Konsultację</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contact-page">
+
+        <!-- Contact Header -->
+        <section class="contact-header">
+            <div class="container">
+                <span class="section-eyebrow">KONTAKT</span>
+                <h1 class="contact-title">UMÓW KONSULTACJĘ</h1>
+                <div class="contact-divider">
+                    <span class="divider-line"></span>
+                    <span class="divider-star">✦</span>
+                    <span class="divider-line"></span>
+                </div>
+                <p class="contact-subtitle">Pierwsza rozmowa (20 min) jest całkowicie bezpłatna i niezobowiązująca.</p>
+            </div>
+        </section>
+
+        <!-- Contact Form & Photo Section -->
+        <section class="contact-main">
+            <div class="container contact-grid">
+
+                <!-- Form Card -->
+                <div class="contact-form-card">
+                    <div class="form-header">
+                        <i class="fas fa-envelope"></i>
+                        <h2>NAPISZ DO MNIE</h2>
+                    </div>
+
+                    <form class="contact-form" action="#" method="POST">
+                        <div class="form-group">
+                            <label for="name">Imię <span class="required">*</span></label>
+                            <input type="text" id="name" name="name" placeholder="Twoje imię" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email <span class="required">*</span></label>
+                            <input type="email" id="email" name="email" placeholder="twoj@email.pl" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Wiadomość <span class="required">*</span></label>
+                            <textarea id="message" name="message" rows="5" placeholder="W czym mogę Ci pomóc?"
+                                required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-gold btn-lg btn-full">WYŚLIJ WIADOMOŚĆ</button>
+                    </form>
+                </div>
+
+                <!-- Photo Section -->
+                <div class="contact-photo-section">
+                    <div class="contact-photo-wrapper">
+                        <img src="images/krzysztof-kontakt.jpg" alt="Krzysztof Trela - Coach i Mentor"
+                            class="contact-photo">
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Extended Footer -->
+    <footer class="footer-extended">
+        <div class="container footer-extended-grid">
+            <div class="footer-col footer-brand-col">
+                <a href="index.php" class="footer-logo">
+                    <img src="images/logo.png" alt="Jego Słowem" class="footer-brand-logo">
+                </a>
+                <p class="footer-tagline">Towarzyszę ludziom w odzyskiwaniu prawdy o sobie i budowaniu głębokich relacji
+                    w świetle Bożego Słowa.</p>
+            </div>
+            <div class="footer-col">
+                <h4>NAWIGACJA</h4>
+                <ul>
+                    <li><a href="o-mnie.html">O mnie</a></li>
+                    <li><a href="dla-kogo.html">Dla kogo</a></li>
+                    <li><a href="cennik.html">Oferta</a></li>
+                    <li><a href="faq.html">Opinie</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>KONTAKT</h4>
+                <p><i class="fas fa-phone"></i> 530 441 448</p>
+                <p><i class="fas fa-envelope"></i> kontakt@jegoslowem.pl</p>
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <p class="copyright">&copy; 2025 JEGO SŁOWEM. Wszelkie prawa zastrzeżone.</p>
+            <a href="#" class="privacy-link">Polityka Prywatności</a>
+        </div>
+    </footer>
+
+    <script src="js/main.js" defer></script>
+</body>
+
+</html>
