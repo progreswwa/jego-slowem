@@ -4,12 +4,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog - Jego Słowem</title>
+    <title>Blog - Jego Słowem | Artykuły o relacjach, rozwoju i duchowości</title>
+    <meta name="description"
+        content="Inspirujące artykuły o budowaniu relacji, rozwoju osobistym i duchowości. Praktyczne wskazówki oparte na mądrości Słowa Bożego.">
+    <meta name="keywords" content="coaching, relacje, rozwój osobisty, duchowość, mentoring, Słowo Boże">
+    <meta name="author" content="Krzysztof Kozieł">
+
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Blog - Jego Słowem">
+    <meta property="og:description" content="Inspirujące artykuły o budowaniu relacji i rozwoju osobistym.">
+    <meta property="og:image" content="images/blog-og.jpg">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://jegoslowem.pl/blog.html">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Structured Data for Blog -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Blog",
+        "name": "Blog Jego Słowem",
+        "description": "Artykuły o relacjach, rozwoju osobistym i duchowości",
+        "url": "https://jegoslowem.pl/blog.html",
+        "author": {
+            "@type": "Person",
+            "name": "Krzysztof Kozieł"
+        }
+    }
+    </script>
 </head>
 
 <body>
@@ -45,25 +76,127 @@
         </div>
     </header>
 
-    <main class="about-page-main" style="flex: 1;">
-        <section class="about-header">
+    <main class="blog-main">
+        <!-- Blog Header -->
+        <section class="blog-header">
             <div class="container">
-                <h1 class="about-page-title">BLOG</h1>
+                <span class="section-eyebrow">INSPIRACJE</span>
+                <h1 class="blog-title">BLOG</h1>
+                <div class="section-divider"><span></span><i class="fas fa-feather-alt"></i><span></span></div>
+                <p class="blog-subtitle">Artykuły o relacjach, rozwoju osobistym i duchowości</p>
             </div>
         </section>
-        <section class="container" style="padding: var(--section-spacing) 0;">
-            <p class="hero-description" style="text-align: center; margin-bottom: 3rem;">Inspiracje, artykuły i
-                przemyślenia.</p>
 
-            <!-- Coming Soon Placeholder -->
-            <div
-                style="text-align: center; padding: 4rem 2rem; background: var(--bg-surface); border-radius: var(--card-radius); border: 1px solid var(--line-color);">
-                <i class="fas fa-pencil-alt"
-                    style="font-size: 3rem; color: var(--gold-primary); margin-bottom: 1.5rem; display: block;"></i>
-                <h3 style="font-family: var(--font-heading); color: var(--gold-primary); margin-bottom: 1rem;">Wkrótce
-                </h3>
-                <p style="color: var(--text-muted); max-width: 500px; margin: 0 auto;">Pracuję nad inspirującymi
-                    artykułami, które wkrótce tutaj opublikuję. Zapraszam do śledzenia!</p>
+        <!-- Blog Posts Grid -->
+        <section class="blog-posts-section section">
+            <div class="container">
+                <div class="blog-posts-grid">
+
+                    <!-- Featured Post (Larger) -->
+                    <article class="blog-card blog-card-featured">
+                        <a href="#" class="blog-card-image-link">
+                            <img src="images/blog/relacje-artykul.jpg" alt="Jak odbudować zaufanie w relacji"
+                                class="blog-card-image" loading="lazy">
+                            <span class="blog-card-category">Relacje</span>
+                        </a>
+                        <div class="blog-card-content">
+                            <time datetime="2026-01-05" class="blog-card-date">
+                                <i class="far fa-calendar-alt"></i> 5 Stycznia 2026
+                            </time>
+                            <h2 class="blog-card-title">
+                                <a href="#">Jak odbudować zaufanie w relacji po kryzysie?</a>
+                            </h2>
+                            <p class="blog-card-excerpt">Zaufanie jest fundamentem każdej głębokiej relacji. Kiedy
+                                zostaje naruszone, może wydawać się, że wszystko jest stracone. Jednak z pomocą Bożej
+                                mądrości i cierpliwości, odbudowa jest możliwa...</p>
+                            <a href="#" class="blog-card-readmore">
+                                Czytaj więcej <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- Regular Post -->
+                    <article class="blog-card">
+                        <a href="#" class="blog-card-image-link">
+                            <img src="images/blog/komunikacja.jpg" alt="5 zasad głębokiej komunikacji"
+                                class="blog-card-image" loading="lazy">
+                            <span class="blog-card-category">Komunikacja</span>
+                        </a>
+                        <div class="blog-card-content">
+                            <time datetime="2025-12-28" class="blog-card-date">
+                                <i class="far fa-calendar-alt"></i> 28 Grudnia 2025
+                            </time>
+                            <h3 class="blog-card-title">
+                                <a href="#">5 zasad głębokiej komunikacji w związku</a>
+                            </h3>
+                            <p class="blog-card-excerpt">Prawdziwa komunikacja to nie tylko wymiana słów. To sztuka
+                                słuchania, rozumienia i bycia obecnym...</p>
+                            <a href="#" class="blog-card-readmore">
+                                Czytaj więcej <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- Regular Post -->
+                    <article class="blog-card">
+                        <a href="#" class="blog-card-image-link">
+                            <img src="images/blog/przebaczenie.jpg" alt="Siła przebaczenia" class="blog-card-image"
+                                loading="lazy">
+                            <span class="blog-card-category">Duchowość</span>
+                        </a>
+                        <div class="blog-card-content">
+                            <time datetime="2025-12-15" class="blog-card-date">
+                                <i class="far fa-calendar-alt"></i> 15 Grudnia 2025
+                            </time>
+                            <h3 class="blog-card-title">
+                                <a href="#">Siła przebaczenia – jak uwolnić się od przeszłości</a>
+                            </h3>
+                            <p class="blog-card-excerpt">Przebaczenie nie jest słabością. To akt odwagi, który uwalnia
+                                przede wszystkim nas samych...</p>
+                            <a href="#" class="blog-card-readmore">
+                                Czytaj więcej <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- Regular Post -->
+                    <article class="blog-card">
+                        <a href="#" class="blog-card-image-link">
+                            <img src="images/blog/samotnosc.jpg" alt="Samotność wśród ludzi" class="blog-card-image"
+                                loading="lazy">
+                            <span class="blog-card-category">Rozwój</span>
+                        </a>
+                        <div class="blog-card-content">
+                            <time datetime="2025-12-01" class="blog-card-date">
+                                <i class="far fa-calendar-alt"></i> 1 Grudnia 2025
+                            </time>
+                            <h3 class="blog-card-title">
+                                <a href="#">Samotność wśród ludzi – jak ją przezwyciężyć?</a>
+                            </h3>
+                            <p class="blog-card-excerpt">Można mieć setki znajomych i nadal czuć się samotnym. Prawdziwa
+                                bliskość wymaga czegoś więcej...</p>
+                            <a href="#" class="blog-card-readmore">
+                                Czytaj więcej <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </article>
+
+                </div>
+
+                <!-- Newsletter CTA -->
+                <div class="blog-newsletter">
+                    <div class="blog-newsletter-content">
+                        <i class="fas fa-envelope-open-text"></i>
+                        <div>
+                            <h3>Chcesz więcej inspiracji?</h3>
+                            <p>Zapisz się, a będziesz otrzymywać nowe artykuły prosto na swoją skrzynkę.</p>
+                        </div>
+                    </div>
+                    <form class="blog-newsletter-form">
+                        <input type="email" placeholder="Twój adres email" required>
+                        <button type="submit" class="btn btn-primary">Zapisz się</button>
+                    </form>
+                </div>
             </div>
         </section>
     </main>
