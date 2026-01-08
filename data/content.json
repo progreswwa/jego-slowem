@@ -1,3 +1,16 @@
 {
-    "pages": {}
+    "home": {
+        "hero_eyebrow": "COACHING • MENTORING • CONSULTING",
+        "hero_title": "PRZEBUDZENIE",
+        "hero_title_gold": "RELACJI",
+        "hero_description": "Pomagam przywracać utracone i budować trwałe relacje w oparciu o wartości Słowa Bożego. Przeprowadzam przez drogę prawdy, uzdrowienia i miłości.",
+        "hero_quote": "OTO CZYNIĘ WSZYSTKO NOWYM.",
+        "hero_quote_source": "— AP 21:5"
+    },
+    "about": {
+        "name": "KRZYSZTOF KOZIEŁ",
+        "role": "COACH + MENTOR",
+        "bio": "Mam na imię Krzysztof. Towarzyszę ludziom w odzyskiwaniu prawdy o sobie, budowaniu dojrzałych relacji i odnajdywaniu głębokiego sensu życia – w świetle Bożego Słowa."
+    },
+    "blog": []
 }

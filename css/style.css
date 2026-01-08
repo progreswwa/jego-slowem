@@ -413,12 +413,58 @@ button {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding-top: 4rem;
+    padding-top: 5rem;
     padding-bottom: 0.5rem;
     position: relative;
     overflow: hidden;
     background: radial-gradient(circle at center, rgba(20, 20, 22, 1) 0%, #000000 100%);
     text-align: center;
+}
+
+/* Animated Wave Background */
+.hero::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: -50%;
+    width: 200%;
+    height: 150px;
+    background:
+        linear-gradient(180deg, transparent 0%, rgba(201, 167, 83, 0.03) 100%),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='rgba(201,167,83,0.05)' d='M0,192L48,176C96,160,192,128,288,133.3C384,139,480,181,576,186.7C672,192,768,160,864,154.7C960,149,1056,171,1152,165.3C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
+    background-size: 100% 100%;
+    animation: waveFlow 15s ease-in-out infinite;
+    opacity: 0.6;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    bottom: 30px;
+    left: -50%;
+    width: 200%;
+    height: 120px;
+    background:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='rgba(201,167,83,0.03)' d='M0,64L48,80C96,96,192,128,288,128C384,128,480,96,576,90.7C672,85,768,107,864,128C960,149,1056,171,1152,165.3C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
+    background-size: 100% 100%;
+    animation: waveFlow 20s ease-in-out infinite reverse;
+    opacity: 0.4;
+    z-index: 0;
+    pointer-events: none;
+}
+
+@keyframes waveFlow {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    50% {
+        transform: translateX(25%);
+    }
 }
 
 .hero-content {
